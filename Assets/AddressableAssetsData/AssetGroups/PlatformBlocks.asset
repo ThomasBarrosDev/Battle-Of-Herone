@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: PlatformBlocks
+  m_EditorClassIdentifier: 
+  m_GroupName: PlatformBlocks
+  m_Data:
+    m_SerializedData: []
+  m_GUID: fb33e89eabff0ab4aa024d3eac940984
+  m_SerializeEntries:
+  - m_GUID: 98dd8e405a3f26848b63e1b78dfb7c5b
+    m_Address: Assets/Game/Prefabs/Platform/Grama.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Ground
+  - m_GUID: a8fa1c076f83fb94f986f0141a28ac23
+    m_Address: Assets/Bitgem/Cube_World/Dirt/Prefabs/dirt_cube_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Ground
+  - m_GUID: f935ccb6d1a6a854197abbdd5a69eefb
+    m_Address: Assets/Bitgem/Cube_World/Dirt/Prefabs/dirt_cube_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Ground
+  - m_GUID: c980d1f27dc965a44af9a3652477671c
+    m_Address: Assets/Bitgem/Cube_World/Ground/Prefabs/ground_cube.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Ground
+  - m_GUID: b46cdfd9e5d379f4eab9e6714883dfa1
+    m_Address: Assets/Bitgem/Cube_World/Lava/Prefabs/lava_cubes_3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Ground
+  - m_GUID: 53b9e2e8c2c1ed2439a09c2ab3fb11e4
+    m_Address: Assets/Bitgem/Cube_World/Stone/Prefabs/stone_cube_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Ground
+  - m_GUID: 1e3e89a9932575644ae6697c585dc150
+    m_Address: Assets/Bitgem/Cube_World/Stone/Prefabs/stone_cube_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Ground
+  - m_GUID: a95f32ffd89eb5a4eb1bbe0715cb0b28
+    m_Address: Assets/Bitgem/Cube_World/Stone/Prefabs/stone_cube_3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Ground
+  - m_GUID: 2082cec8728948b428a7482c60e6b855
+    m_Address: Assets/Bitgem/Cube_World/Stone/Prefabs/stone_cube_4.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Ground
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 10216fb0b3f89944eb63a21a91b3cda9, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 59b4e677bad25f14faa559a2f8709a03, type: 2}
+    - {fileID: 11400000, guid: 018a794efea4e9b44959cbd6bdd7c775, type: 2}
