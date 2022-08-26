@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraControl : MonoBehaviour
+namespace BatteOfHerone.CameraManager
 {
-    public Transform[] positions;
-    
-
-    private void ChangePosition(Transform pos)
+    public class CameraControl : MonoBehaviour
     {
-        transform.position = pos.position;
-        transform.rotation = pos.rotation;
-    }
+        public Transform[] positions;
 
-    public void BottunChangePosition(int i)
-    {
-        ChangePosition(positions[i]);
-    }
 
+        private void ChangePosition(Transform pos)
+        {
+            transform.position = pos.position;
+            transform.rotation = pos.rotation;
+        }
+
+        public void BottunChangePosition(int i)
+        {
+            ChangePosition(positions[i]);
+        }
+
+    }
 }

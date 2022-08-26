@@ -338,4 +338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86bec292674b5a344b312e0d66427bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMoved: 0
+  m_isMoved: 0
+  myPositionInGrid: {x: 0, y: 0}
+  m_notIsFree: 0

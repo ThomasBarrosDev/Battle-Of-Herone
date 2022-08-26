@@ -938,9 +938,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4200280051893222417}
   - component: {fileID: 4200280051903091657}
+  - component: {fileID: 1548859331}
+  - component: {fileID: 1548859332}
+  - component: {fileID: 1548859329}
   m_Layer: 0
   m_Name: Mercenary
-  m_TagString: Player
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -954,8 +957,8 @@ Transform:
   m_GameObject: {fileID: 4200280051893575807}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4200280051893222441}
   - {fileID: 4200280051893222423}
@@ -975,7 +978,7 @@ Animator:
   m_GameObject: {fileID: 4200280051893575807}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 66f54ed3c799fc343adcef14365b56b5, type: 3}
-  m_Controller: {fileID: 9100000, guid: a90fbc08269c45b4cafd5d09fe44c409, type: 2}
+  m_Controller: {fileID: 9100000, guid: 713ea504c3ae3fc4bb9e3073bf824f60, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -985,6 +988,51 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!54 &1548859331
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200280051893575807}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!65 &1548859332
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200280051893575807}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.45537734, z: 1}
+  m_Center: {x: 0, y: 0.17768866, z: 0}
+--- !u!114 &1548859329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200280051893575807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1bc089e6e6657e4ba859ad80866ba6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerEnum: 0
+  movements: 2
+  m_myPositionBlock: {x: 0, y: 0}
+  blank: {fileID: 2100000, guid: 9de5aadc8f37f61489b4ab567c517fcd, type: 2}
 --- !u!1 &4200280051893576101
 GameObject:
   m_ObjectHideFlags: 0
