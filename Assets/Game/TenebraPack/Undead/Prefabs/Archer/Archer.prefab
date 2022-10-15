@@ -1378,8 +1378,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 793758271061856519}
-  m_LocalRotation: {x: -0.0000000033161611, y: -0.000000060236644, z: 0.099833444,
-    w: 0.9950042}
+  m_LocalRotation: {x: -0.0000000033161611, y: -0.000000060236644, z: 0.099833444, w: 0.9950042}
   m_LocalPosition: {x: -0.2977878, y: -0.000000012111664, z: 0}
   m_LocalScale: {x: 0.99999994, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2140,7 +2139,9 @@ GameObject:
   m_Component:
   - component: {fileID: 793758271061888381}
   - component: {fileID: 793758271071249097}
-  - component: {fileID: 3118397000961006059}
+  - component: {fileID: 8647593759999622911}
+  - component: {fileID: 1410972321536522308}
+  - component: {fileID: 5232285911327227464}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Player
@@ -2180,7 +2181,7 @@ Animator:
   m_GameObject: {fileID: 793758271061856605}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 663938890ebbe6748a43c0bd42c9ffe1, type: 3}
-  m_Controller: {fileID: 9100000, guid: 71c9abe0c0b2ffb458b1af68539f2775, type: 2}
+  m_Controller: {fileID: 9100000, guid: 713ea504c3ae3fc4bb9e3073bf824f60, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2190,7 +2191,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3118397000961006059
+--- !u!54 &8647593759999622911
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793758271061856605}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
+--- !u!65 &1410972321536522308
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793758271061856605}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.48096034, y: 1.5190396, z: 0.57122797}
+  m_Center: {x: 0.00677, y: 0.7559929, z: -0.069957525}
+--- !u!114 &5232285911327227464
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2199,10 +2229,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 793758271061856605}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 290f04724dad71c4d905e604d534f662, type: 3}
+  m_Script: {fileID: 11500000, guid: c1bc089e6e6657e4ba859ad80866ba6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
+  playerEnum: 0
+  movements: 0
+  m_position: {x: 0, y: 0}
+  target: {fileID: 0}
 --- !u!1 &793758271061856609
 GameObject:
   m_ObjectHideFlags: 0

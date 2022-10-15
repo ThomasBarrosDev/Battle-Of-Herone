@@ -1,24 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BatteOfHerone.Others;
+using BatteOfHerone.Blocks;
 using BatteOfHerone.Enuns;
+using BatteOfHerone.Utils;
+using BatteOfHerone.Character;
 
 namespace BatteOfHerone.Managers
 {
     public class PlayerManager : MonoBehaviour
     {
         public PlayerEnum playerEnum;
-        public GameObject player;
-        public bool walk;
-        public float speed;
-        public CharacterScript charar;
-        private void Start()
+        
+        public CharacterScript player;
+        
+        public BlockScript block;
+        
+        private void teste()
         {
-
+            Debug.Log("Event Iniciado");
         }
+
         void Update()
         {
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                EventManager.StartListening(EventName.InitialTurn, teste, true);
+            }
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                EventManager.TriggerEvent(EventName.InitialTurn);
+            }
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                EventManager.StopListening(EventName.InitialTurn, teste);
+            }
+
+
+
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -27,34 +47,36 @@ namespace BatteOfHerone.Managers
                 {
                     if (hit.transform.CompareTag("Block"))
                     {
-                        if (hit.transform.GetComponent<BlockScript>().IsMoved)
+                        block = hit.transform.GetComponent<BlockScript>();
+
+                        if (block.IsSelection)
                         {
                             if (!player)
+                            {
+                                PlatformManager.Instance.ClearSearch();
                                 return;
+                            }
 
-                            player.GetComponent<CharacterScript>().Target = hit.transform.GetComponent<BlockScript>().MyPositionInGrid;
-
-                            player.GetComponent<CharacterScript>().Walk = true;
-
-
-                            PlatformManager.Instance.Adjacentpositions.Remove(hit.transform.GetComponent<BlockScript>().MyPositionInGrid);
-
-                            PlatformManager.Instance.DisableGridSelect();
+                            player.Mover(block);                              
                         }
                     }
+
                     player = null;
-                    PlatformManager.Instance.DisableGridSelect();
+
+                    PlatformManager.Instance.ClearSearch(); 
+
                     if (hit.transform.CompareTag("Character"))
                     {
-                        if (playerEnum == hit.transform.gameObject.GetComponent<CharacterScript>().PlayerEnum)
+                        player = hit.transform.gameObject.GetComponent<CharacterScript>();
+
+                        if (playerEnum == player.PlayerEnum)
                         {
-                            player = hit.transform.gameObject;
-                            if (!player.GetComponent<CharacterScript>().Walk)
-                                player.GetComponent<CharacterScript>().SetPossibilities();
+                            if (!player.IsChangePosition && !player.isWalk)
+                                player.SetPossibilities();
                         }
                         else
                         {
-                            Debug.Log("personagem do player 2");
+                            Debug.Log("personagem do outro player");
                         }
                     }
 

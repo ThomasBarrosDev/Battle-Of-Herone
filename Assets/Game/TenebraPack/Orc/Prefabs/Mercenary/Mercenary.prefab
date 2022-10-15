@@ -957,8 +957,8 @@ Transform:
   m_GameObject: {fileID: 4200280051893575807}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1.2, y: 1.1, z: 1.2}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4200280051893222441}
   - {fileID: 4200280051893222423}
@@ -999,10 +999,10 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
+  m_UseGravity: 1
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 1
 --- !u!65 &1548859332
 BoxCollider:
@@ -1012,11 +1012,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200280051893575807}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.45537734, z: 1}
-  m_Center: {x: 0, y: 0.17768866, z: 0}
+  m_Size: {x: 1.2, y: 0.01, z: 1.2}
+  m_Center: {x: -0.0049473345, y: 0.010200683, z: -0.00048436222}
 --- !u!114 &1548859329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1031,8 +1031,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerEnum: 0
   movements: 2
-  m_myPositionBlock: {x: 0, y: 0}
-  blank: {fileID: 2100000, guid: 9de5aadc8f37f61489b4ab567c517fcd, type: 2}
+  m_positionBlock: {fileID: 0}
+  m_animator: {fileID: 4200280051903091657}
 --- !u!1 &4200280051893576101
 GameObject:
   m_ObjectHideFlags: 0
