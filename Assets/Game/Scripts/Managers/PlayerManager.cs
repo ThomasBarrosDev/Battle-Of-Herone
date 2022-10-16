@@ -23,7 +23,7 @@ namespace BatteOfHerone.Managers
 
         void Update()
         {
-
+/*
             if (Input.GetKeyDown(KeyCode.A))
             {
                 EventManager.StartListening(EventName.InitialTurn, teste, true);
@@ -36,7 +36,7 @@ namespace BatteOfHerone.Managers
             {
                 EventManager.StopListening(EventName.InitialTurn, teste);
             }
-
+*/
 
 
             if (Input.GetMouseButtonDown(0))
@@ -57,7 +57,7 @@ namespace BatteOfHerone.Managers
                                 return;
                             }
 
-                            player.Mover(block);                              
+                            player.Moviment(block);                              
                         }
                     }
 
@@ -81,33 +81,10 @@ namespace BatteOfHerone.Managers
                     }
 
                 }
-                else
-                {
-                    PlatformManager.Instance.DisableGridSelect();
-                }
+                
             }
 
-
-
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                PlatformManager.Instance.SetThePossibilitiesForThrowCard(playerEnum);
-            }
         }
 
-        /* private void Move(Vector2Int target)
-         {
-             Vector3 position = PlatformManager.Instance.Grid[target.x, target.y].transform.position;
-             position.y = player.transform.position.y;
-             player.transform.position = Vector3.MoveTowards(player.transform.position, position, speed * Time.deltaTime);
-             PlatformManager.Instance.m_isSelect = true;
-             if (player.transform.position == position)
-             {
-                 PlatformManager.Instance.m_myPos = target;
-                 PlatformManager.Instance.m_isSelect = false;
-                 player.GetComponent<CharacterScript>().walk = false;
-                 walk = false;
-             }
-         }*/
     }
 }

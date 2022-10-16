@@ -7,29 +7,35 @@ namespace BatteOfHerone.Blocks
 {
     public class BlockScript : MonoBehaviour
     {
-
-        public BlockScript prev;
-        public float distance = float.MaxValue;
-
-        public bool m_isSelection;
+        //setar pos que o player vai andar
         [SerializeField] private Transform m_movePos;
-        [SerializeField] private Vector2Int position;
-        [SerializeField] private bool m_IsFree;
 
         [SerializeField] private Material m_originalMat;
         [SerializeField] private Material m_selectMat;
-        [SerializeField] private Material m_blankMat;
+        [SerializeField] private Material m_originMat;
+
+
+        private bool m_IsFree;
+        private Vector2Int position;
+        private bool m_isSelection;
+        private BlockScript m_prev;
+        private float m_distance = float.MaxValue;
+
 
         public Vector2Int Position { get => position; set => position = value; }
-        public bool IsSelection { get => m_isSelection; set => m_isSelection = value; }
+        public bool IsSelection { get => IsSelection1; set => IsSelection1 = value; }
         public bool IsFree { get => m_IsFree; set => m_IsFree = value; }
         public Transform Movepos { get => m_movePos; set => m_movePos = value; }
+        public BlockScript Prev { get => m_prev; set => m_prev = value; }
+        public float Distance { get => m_distance; set => m_distance = value; }
+        public bool IsSelection1 { get => m_isSelection; set => m_isSelection = value; }
 
         private void Start()
         {
             IsFree = true;
-            m_isSelection = false;
+            IsSelection1 = false;
         }
+
         public void SelectBlock()
         {
             if (IsFree)
@@ -42,42 +48,16 @@ namespace BatteOfHerone.Blocks
                 Debug.Log("este bloco não está livre");
             }
         }
+
         public void DeSelectBlock()
         {
             GetComponentInChildren<MeshRenderer>().material = m_originalMat;
             IsSelection = false;
         }
+
         public void DestinationBlock()
         {
-            GetComponentInChildren<MeshRenderer>().material = m_blankMat;
-        }
-
-
-        private void OnTriggerEnter(Collider other)
-        {
-
-        }
-        private void OnTriggerStay(Collider other)
-        {
-            if (other.CompareTag("Character"))
-            {
-                m_IsFree = false;
-                //Debug.Log(myPositionInGrid.x + "," + myPositionInGrid.y + " Tem gente");
-
-            }
-        }
-
-        private void OnCollisionStay(Collision collision)
-        {
-
-        }
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.CompareTag("Character"))
-            {
-                m_IsFree = true;
-
-            }
+            GetComponentInChildren<MeshRenderer>().material = m_originMat;
         }
     }
 }

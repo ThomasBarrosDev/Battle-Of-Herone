@@ -16,11 +16,10 @@ namespace BatteOfHerone.Character
         [SerializeField] private BlockScript m_positionBlock;
         [SerializeField] Animator m_animator;
 
-        private bool m_walk;
+        private bool m_isWalk;
         private bool m_isChangePosition;
 
-
-        public bool isWalk { get => m_walk; set => m_walk = value; }
+        public bool isWalk { get => m_isWalk; set => m_isWalk = value; }
         public PlayerEnum PlayerEnum { get => playerEnum; set => playerEnum = value; }
         public bool IsChangePosition { get => m_isChangePosition; set => m_isChangePosition = value; }
         public BlockScript PositionBlock { get => m_positionBlock; set => m_positionBlock = value; }
@@ -32,12 +31,10 @@ namespace BatteOfHerone.Character
 
         private void Update()
         {
-            m_animator.SetBool("walk", m_walk);
+            m_animator.SetBool("walk", m_isWalk);
 
         }
-
-        //mover para uma classe state
-        public void Mover(BlockScript destiny)
+        public void Moviment(BlockScript destiny)
         {
             StartCoroutine(MoveSequence(destiny));
         }
@@ -49,7 +46,7 @@ namespace BatteOfHerone.Character
 
             yield return StartCoroutine(Move(path));
 
-            m_walk = false;
+            m_isWalk = false;
 
             yield return null;
 
@@ -88,7 +85,7 @@ namespace BatteOfHerone.Character
             while (b != pos)
             {
                 path.Add(b);
-                b = b.prev;
+                b = b.Prev;
             }
 
             path.Reverse();
@@ -104,9 +101,10 @@ namespace BatteOfHerone.Character
                 yield return Walk(b);
             }
         }
+
         private IEnumerator Walk(BlockScript blockTarget)
         {
-            m_walk = true;
+            m_isWalk = true;
 
             PositionBlock.IsFree = true;
             Vector3 ltarget = blockTarget.Movepos.position;
@@ -161,14 +159,17 @@ namespace BatteOfHerone.Character
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0, 0, 0, 3), 3f * Time.deltaTime);
         }
+
         private void LookDown()
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0, 1, 0, 0), 3f * Time.deltaTime);
         }
+
         private void LookForward()
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0, 1, 0, 1), 3f * Time.deltaTime);
         }
+
         private void LookBackwards()
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0, -1, 0, 1), 3f * Time.deltaTime);
