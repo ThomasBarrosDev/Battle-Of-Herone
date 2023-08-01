@@ -15,21 +15,29 @@ namespace BatteOfHerone.Managers
         public class LineGrid
         {
             public BlockScript[] blocks;
-            public LineGrid()
+
+            public LineGrid(int x)
             {
-                blocks = new BlockScript[5];
+                blocks = new BlockScript[x];
             }
         }
+        public int Platform_X;
+        public int Platform_Y;
+        public BlockScript block;
+
         [Header("Grid")]
         [SerializeField] private BlockScript[] m_gridSet;
         [SerializeField] private AssetReference[] m_blocksReferences;
+        [SerializeField] private List<BlockScript> m_blockSelecitonEffectList = new();
 
-        private LineGrid[] m_lines = new LineGrid[10];
+        [SerializeField] private LineGrid[] m_lines;
 
         public LineGrid[] Grid { get => m_lines; set => m_lines = value; }
-      
-        public List<BlockScript> BlocksList { get; set; } = new List<BlockScript>();
 
+        public bool EnableEffect { get; set; }
+
+        public List<BlockScript> BlocksList { get; set; } = new();
+        public List<BlockScript> BlockSelecitonEffectList { get => m_blockSelecitonEffectList; set => m_blockSelecitonEffectList = value; }
 
         private Vector2Int[] m_directions = new Vector2Int[4]
         {
@@ -42,28 +50,16 @@ namespace BatteOfHerone.Managers
 
         private IEnumerator Start()
         {
-            SetPlatform();
+            Grid = new LineGrid[Platform_X];
+            InstancePlatform();
             yield return new WaitForEndOfFrame();
 
             GameManager.Instance.InstantiateMonster(GameManager.Instance.m_monstersPrefabs[1], Grid[0].blocks[2], PlayerEnum.PlayerOne);
             GameManager.Instance.InstantiateMonster(GameManager.Instance.m_monstersPrefabs[1], Grid[2].blocks[2], PlayerEnum.PlayerOne);
         }
 
-        private void SetPlatform()
-        {
-            int n = 0;
-            for (int i = 0; i < 10; i++)
-            {
-                Grid[i] = new LineGrid();
-                for (int j = 0; j < 5; j++)
-                {
-                    Grid[i].blocks[j] = m_gridSet[n];
-                    Grid[i].blocks[j].Position = new Vector2Int(i, j);
-                    n++;
-                }
-            }
-        }
-        
+
+
 
         public void ClearSearch()
         {
@@ -75,23 +71,43 @@ namespace BatteOfHerone.Managers
             }
             BlocksList = new();
         }
-        public void Search(BlockScript myPosition, int qntMovement)
+
+        public void SearchBlocks(BlockScript myPosition, int qntMovement)
         {
             BlocksList = SearchList(myPosition, qntMovement);
-            foreach (var item in BlocksList)
+            foreach (var item in BlocksList) { item.SelectBlock(); }
+        }
+
+        public void SearchBlocksMovement(BlockScript myPosition, int qntMovement)
+        {
+            BlocksList = SearchList(myPosition, qntMovement);
+            foreach (var item in BlocksList) { item.SelectBlockMovement(); }
+        }
+
+        public List<BlockScript> SearchBlocksEffects()
+        {
+            List<BlockScript> blocksEffects = new();
+
+            for (int i = 0; i < Grid.Length; i++)
             {
-                if (item.IsFree)
+                for (int j = 0; j < Grid[i].blocks.Length; j++)
                 {
-                    item.SelectBlock();
+                    if (!Grid[i].blocks[j].IsSelectionEffect)
+                        continue;
+
+                    blocksEffects.Add(Grid[i].blocks[j]);
                 }
             }
+            return blocksEffects;
         }
 
         private List<BlockScript> SearchList(BlockScript start, int qntMovement)
         {
-            List<BlockScript> blocksSearch = new List<BlockScript>();
+            List<BlockScript> blocksSearch = new List<BlockScript>
+            {
+                start
+            };
 
-            blocksSearch.Add(start);
             ClearSearch();
 
             Queue<BlockScript> checkNext = new Queue<BlockScript>();
@@ -108,7 +124,6 @@ namespace BatteOfHerone.Managers
                     Vector2Int temp = b.Position + m_directions[i];
                     try
                     {
-
                         BlockScript next = Grid[temp.x].blocks[temp.y];
 
                         if (next.Distance <= b.Distance + 1 || b.Distance + 1 > qntMovement || next == null)
@@ -139,6 +154,24 @@ namespace BatteOfHerone.Managers
             Queue<BlockScript> temp = now;
             now = next;
             next = temp;
-        }     
+        }
+
+        private void InstancePlatform()
+        {
+            GameObject lPlatform = new GameObject("Platform");
+            int n = 0;
+            for (int i = 0; i < Platform_X; i++)
+            {
+                Grid[i] = new LineGrid(Platform_Y);
+                for (int j = 0; j < Platform_Y; j++)
+                {
+                    Grid[i].blocks[j] = Instantiate(block, lPlatform.transform);
+                    Vector2Int XZ = new Vector2Int(i, j);
+                    Grid[i].blocks[j].transform.localPosition = new Vector3(XZ.x, 0, XZ.y);
+                    Grid[i].blocks[j].Position = XZ;
+                    n++;
+                }
+            }
+        }
     }
 }

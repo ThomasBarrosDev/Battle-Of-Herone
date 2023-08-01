@@ -26,7 +26,7 @@ namespace BatteOfHerone.Character
 
         private void Start()
         {
-            m_animator = GetComponent<Animator>();
+            m_animator = GetComponentInChildren<Animator>();
         }
 
         private void Update()
@@ -72,7 +72,7 @@ namespace BatteOfHerone.Character
         public void SetPossibilities()
         {
             PlatformManager.Instance.ClearSearch();
-            PlatformManager.Instance.Search(PositionBlock, movements);
+            PlatformManager.Instance.SearchBlocksMovement(PositionBlock, movements);
         }
 
 
@@ -124,9 +124,7 @@ namespace BatteOfHerone.Character
                 yield return null;
             }
 
-            PositionBlock.IsFree = false;
-
-
+            PositionBlock.SetInBlock(this);
         }
 
         private void Look(Vector2Int destiny)
@@ -157,22 +155,22 @@ namespace BatteOfHerone.Character
 
         private void LookUp()
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0, 0, 0, 3), 3f * Time.deltaTime);
+            transform.GetChild(0).rotation = Quaternion.Slerp(transform.GetChild(0).rotation, new Quaternion(0, 0, 0, 3), 3f * Time.deltaTime);
         }
 
         private void LookDown()
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0, 1, 0, 0), 3f * Time.deltaTime);
+            transform.GetChild(0).rotation = Quaternion.Slerp(transform.GetChild(0).rotation, new Quaternion(0, 1, 0, 0), 3f * Time.deltaTime);
         }
 
         private void LookForward()
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0, 1, 0, 1), 3f * Time.deltaTime);
+            transform.GetChild(0).rotation = Quaternion.Slerp(transform.GetChild(0).rotation, new Quaternion(0, 1, 0, 1), 3f * Time.deltaTime);
         }
 
         private void LookBackwards()
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0, -1, 0, 1), 3f * Time.deltaTime);
+            transform.GetChild(0).rotation = Quaternion.Slerp(transform.GetChild(0).rotation, new Quaternion(0, -1, 0, 1), 3f * Time.deltaTime);
         }
 
     }
