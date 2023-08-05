@@ -78,7 +78,7 @@ namespace BatteOfHerone.Blocks
             }
             else
             {
-                Debug.Log("este bloco não está livre");
+                //Debug.Log("este bloco não está livre");
             }
         }
 

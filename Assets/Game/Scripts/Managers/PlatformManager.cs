@@ -137,7 +137,7 @@ namespace BatteOfHerone.Managers
                     }
                     catch (Exception)
                     {
-                        Debug.Log(temp + " : não tem essa posição");
+                        //Debug.Log(temp + " : não tem essa posição");
                         continue;
                     }
 
