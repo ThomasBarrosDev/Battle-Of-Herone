@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using BatteOfHerone.Blocks;
 using BatteOfHerone.Enuns;
 using System;
 using BatteOfHerone.Utils;
+using BatteOfHerone.Block;
 
 namespace BatteOfHerone.Managers
 {

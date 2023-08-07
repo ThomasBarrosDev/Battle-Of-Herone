@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BatteOfHerone.CameraManager
+namespace BatteOfHerone.Cam
 {
     public class CameraControl : MonoBehaviour
     {

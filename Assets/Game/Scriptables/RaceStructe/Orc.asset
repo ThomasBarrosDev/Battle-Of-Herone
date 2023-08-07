@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57e4dee979563a49a3004e8a7ebebc2, type: 3}
+  m_Name: Orc
+  m_EditorClassIdentifier: 
+  Race: 2
+  Description: "Os Orcs s\xE3o brutais e ferozes, nativos de terras selvagens. Combatentes
+    habilidosos com la\xE7os tribais fortes."
+  structures:
+  - Name: Quartel
+    Description: "Os Quarteis dos Orcs s\xE3o campos de treinamento brutais, forjando
+      guerreiros implac\xE1veis com t\xE1ticas agressivas e instintos selvagens."
+    Icon: {fileID: 21300000, guid: 767e7b768db69564c9cecd1a0866f8b2, type: 3}
+    Armies:
+    - Name: "Guardi\xE3o Selvagem"
+      Description: "Resistente que domina o equil\xEDbrio entre defesa com escudo
+        e ataques brutais com espada."
+      Hero: {fileID: 6317889457042390040, guid: ce9b229b11f5b00439a50dea37f1c4af, type: 3}
+      Icon: {fileID: 21300000, guid: e13891b3e2d6a9b44aa4af35bc2a833b, type: 3}
+    Upgradings:
+    - Name: "Fortifica\xE7\xE3o Impenetr\xE1vel"
+      Description: "Aprimora a resist\xEAncia do Guardi\xE3o Selvagem, fortalecendo
+        seu escudo e concedendo resist\xEAncia adicional contra ataques f\xEDsicos."
+      Icon: {fileID: 21300000, guid: 229f9dceb220b4b438a10fb0a3285237, type: 3}
+    RequiredStructures: []

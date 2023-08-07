@@ -1,11 +1,8 @@
 using BatteOfHerone.Utils;
 using BatteOfHerone.Enuns;
-using BatteOfHerone.Blocks;
 using BatteOfHerone.Character;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using BatteOfHerone.Block;
 
 namespace BatteOfHerone.Managers
 {

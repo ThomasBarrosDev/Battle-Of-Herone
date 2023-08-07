@@ -17,4 +17,14 @@
         EndTurn
     }
 
+    public enum RaceType
+    {
+        None,
+        Human,
+        Orc,
+        Elf,
+        Undead,
+        Dwarf
+    }
+
 }

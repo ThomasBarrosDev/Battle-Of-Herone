@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BatteOfHerone.Managers;
 using BatteOfHerone.Character;
 
-namespace BatteOfHerone.Blocks
+namespace BatteOfHerone.Block
 {
     public class BlockScript : MonoBehaviour
     {

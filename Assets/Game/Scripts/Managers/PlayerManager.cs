@@ -1,12 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BatteOfHerone.Blocks;
 using BatteOfHerone.Enuns;
-using BatteOfHerone.Utils;
 using BatteOfHerone.Character;
-using Cinemachine;
-using System.Linq;
+using BatteOfHerone.Block;
 
 namespace BatteOfHerone.Managers
 {
@@ -23,8 +19,6 @@ namespace BatteOfHerone.Managers
         public float selectionAreaSize = 1f;
         private List<BlockScript> blocks = new List<BlockScript>();
         private Vector3 selectionAreaCenter;
-
-        public List<AreaEffect> area;
 
         public GameObject effect;
         public GameObject effectinstance;

@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using BatteOfHerone.Enuns;
-using BatteOfHerone.Blocks;
 using BatteOfHerone.Managers;
+using BatteOfHerone.Block;
 
 namespace BatteOfHerone.Character
 {
