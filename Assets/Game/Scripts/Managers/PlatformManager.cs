@@ -6,6 +6,7 @@ using BatteOfHerone.Enuns;
 using System;
 using BatteOfHerone.Utils;
 using BatteOfHerone.Block;
+using UnityEngine.SocialPlatforms.Impl;
 
 namespace BatteOfHerone.Managers
 {
@@ -32,6 +33,8 @@ namespace BatteOfHerone.Managers
 
         [SerializeField] private LineGrid[] m_lines;
 
+        public GameObject Core;
+
         public LineGrid[] Grid { get => m_lines; set => m_lines = value; }
 
         public bool EnableEffect { get; set; }
@@ -54,8 +57,7 @@ namespace BatteOfHerone.Managers
             InstancePlatform();
             yield return new WaitForEndOfFrame();
 
-            GameManager.Instance.InstantiateMonster(GameManager.Instance.m_monstersPrefabs[1], Grid[0].blocks[2], PlayerEnum.PlayerOne);
-            GameManager.Instance.InstantiateMonster(GameManager.Instance.m_monstersPrefabs[1], Grid[2].blocks[2], PlayerEnum.PlayerOne);
+            Core = GameManager.Instance.InstantiateMonster(GameManager.Instance.m_monstersPrefabs[1], Grid[1].blocks[2], PlayerEnum.PlayerOne);
         }
 
 
@@ -158,14 +160,13 @@ namespace BatteOfHerone.Managers
 
         private void InstancePlatform()
         {
-            GameObject lPlatform = new GameObject("Platform");
             int n = 0;
             for (int i = 0; i < Platform_X; i++)
             {
                 Grid[i] = new LineGrid(Platform_Y);
                 for (int j = 0; j < Platform_Y; j++)
                 {
-                    Grid[i].blocks[j] = Instantiate(block, lPlatform.transform);
+                    Grid[i].blocks[j] = Instantiate(block, transform);
                     Vector2Int XZ = new Vector2Int(i, j);
                     Grid[i].blocks[j].transform.localPosition = new Vector3(XZ.x, 0, XZ.y);
                     Grid[i].blocks[j].Position = XZ;

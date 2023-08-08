@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df1d6b14a8e45714d82c41013a24db2f, type: 3}
+  m_Name: OrcBruto
+  m_EditorClassIdentifier: 
+  Name: Orc Bruto
+  Description: "Esse \xE9 bruto"
+  Type: 0
+  Icon: {fileID: 21300000, guid: 21f00a4543ae5b849beabcd0f3036a6a, type: 3}
+  Hero: {fileID: 6317889457042390040, guid: ce9b229b11f5b00439a50dea37f1c4af, type: 3}

@@ -27,4 +27,10 @@
         Dwarf
     }
 
+    public enum ButtonType
+    {
+        Unit,
+        Upgrade
+    }
+
 }

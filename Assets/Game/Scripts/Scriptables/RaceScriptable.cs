@@ -6,11 +6,11 @@ using UnityEngine;
 namespace BatteOfHerone.Scriptables
 {
 
-    [CreateAssetMenu(fileName = "NewRace", menuName = "Custom/Race")]
+    [CreateAssetMenu(fileName = "NewRace", menuName = "UI/Race")]
     public class RaceScriptable : ScriptableObject
     {
         public RaceType Race;
         public string Description;
-        public List<Structure> structures = new List<Structure>();
+        public List<Build> Buildings = new List<Build>();
     }
 }

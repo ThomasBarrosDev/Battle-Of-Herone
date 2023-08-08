@@ -1,3 +1,6 @@
+using BatteOfHerone.Character;
+using BatteOfHerone.Entities;
+using BatteOfHerone.Managers;
 using BatteOfHerone.Scriptables;
 using BatteOfHerone.UI;
 using System.Collections;
@@ -11,13 +14,12 @@ namespace BatteOfHerone.Controllers
         [Header("Teste")]
         public RaceScriptable Race;
         [Header("Components")]
-        [SerializeField] private GameObject _structureMenuContent;
-        [SerializeField] private GameObject _armyAndUpgradeViewPort;
+        [SerializeField] private GameObject _menuViewPort;
 
         [Header("Prefabs")]
-        [SerializeField] private GameObject _armyContent;
-        [SerializeField] private GameObject _upgradingContent;
-        [SerializeField] private PanelButton _button;
+        [SerializeField] private GameObject _MenuPanel;
+        [SerializeField] private CustomButton _button;
+        [SerializeField] private CustomButton _backButton;
 
 
         void Start()
@@ -32,14 +34,65 @@ namespace BatteOfHerone.Controllers
 
         public void InitIalized(RaceScriptable race)
         {
-            race.structures.ForEach((x) =>
+            GameObject lHomePanel = Instantiate(_MenuPanel, _menuViewPort.transform);
+
+            race.Buildings.ForEach((x) =>
             {
-                PanelButton lButton= Instantiate(_button, _structureMenuContent.transform);
+                CustomButton lButton = Instantiate(_button, lHomePanel.transform);
                 lButton.UpdateIcon(x.Icon);
                 lButton.gameObject.name = x.Name;
-                StructureMenu structure = lButton.gameObject.AddComponent<StructureMenu>();
-                structure.Initialized(_armyContent, _upgradingContent, _armyAndUpgradeViewPort, _button, x);
+
+                GameObject lBuildPanel = Instantiate(_MenuPanel, _menuViewPort.transform);
+                lBuildPanel.SetActive(false);
+
+                BuildMenuControll lBuildControll = lBuildPanel.gameObject.AddComponent<BuildMenuControll>();
+                lBuildControll.Panel = lBuildPanel;
+
+                lButton.ListeringAction(()=> lBuildControll.Panel.SetActive(true));
+                lButton.ListeringAction(()=> lHomePanel.SetActive(false));
+
+                lButton.InitButton();
+
+                _backButton.ListeringAction(() => lBuildControll.Panel.SetActive(false));
+                if (x.Childs.Count > 0)
+                {
+                    x.Childs.ForEach((x) =>
+                    {
+                        PlatformManager.Instance.Core.GetComponent<CharacterScript>().SetPossibilities();
+
+                        CustomButton lButton = Instantiate(_button, lBuildPanel.transform);
+                        lButton.UpdateIcon(x.Icon);
+                        lButton.gameObject.name = x.Name;
+
+                        switch (x.Type)
+                        {
+                            case Enuns.ButtonType.Unit:
+
+                                lButton.ListeringAction(() =>
+                                {
+                                    UnitButton unit = (UnitButton)x;
+                                    Instantiate(unit.Hero);
+                                });
+
+                                break;
+                            case Enuns.ButtonType.Upgrade:
+                                break;
+                            default:
+                                break;
+                        }
+
+                        lButton.InitButton();
+                    });
+
+                }
+
             });
+
+            _backButton.ListeringAction(() => lHomePanel.SetActive(true));
+            _backButton.InitButton();
+
+
+           
         }
     }
 }

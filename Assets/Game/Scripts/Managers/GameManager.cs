@@ -16,7 +16,7 @@ namespace BatteOfHerone.Managers
             base.Awake();
         }
 
-        public void InstantiateMonster(GameObject monsterPrefab, BlockScript blockScript, PlayerEnum playerEnum)
+        public GameObject InstantiateMonster(GameObject monsterPrefab, BlockScript blockScript, PlayerEnum playerEnum)
         {
             GameObject go = Instantiate(monsterPrefab, blockScript.transform);
             
@@ -32,6 +32,8 @@ namespace BatteOfHerone.Managers
                 go.transform.GetChild(0).Rotate(0, 90, 0);
             else
                 go.transform.GetChild(0).Rotate(0, -90, 0);
+
+            return go;
 
         }
 
