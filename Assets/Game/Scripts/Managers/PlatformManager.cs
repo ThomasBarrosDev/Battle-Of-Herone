@@ -7,6 +7,7 @@ using System;
 using BatteOfHerone.Utils;
 using BatteOfHerone.Block;
 using UnityEngine.SocialPlatforms.Impl;
+using BatteOfHerone.Character;
 
 namespace BatteOfHerone.Managers
 {
@@ -33,7 +34,8 @@ namespace BatteOfHerone.Managers
 
         [SerializeField] private LineGrid[] m_lines;
 
-        public GameObject Core;
+        public Unit Core;
+        public GameObject unitselect;
 
         public LineGrid[] Grid { get => m_lines; set => m_lines = value; }
 
@@ -57,11 +59,8 @@ namespace BatteOfHerone.Managers
             InstancePlatform();
             yield return new WaitForEndOfFrame();
 
-            Core = GameManager.Instance.InstantiateMonster(GameManager.Instance.m_monstersPrefabs[1], Grid[1].blocks[2], PlayerEnum.PlayerOne);
+            Core = GameManager.Instance.InstantiateMonster(GameManager.Instance.m_monstersPrefabs[1], Grid[1].blocks[2], PlayerState.PlayerOne);
         }
-
-
-
 
         public void ClearSearch()
         {
@@ -74,15 +73,23 @@ namespace BatteOfHerone.Managers
             BlocksList = new();
         }
 
-        public void SearchBlocks(BlockScript myPosition, int qntMovement)
+     /*   public void SearchBlocks(BlockScript myPosition, int qntMovement)
         {
             BlocksList = SearchList(myPosition, qntMovement);
             foreach (var item in BlocksList) { item.SelectBlock(); }
-        }
+        }*/
 
         public void SearchBlocksMovement(BlockScript myPosition, int qntMovement)
         {
-            BlocksList = SearchList(myPosition, qntMovement);
+            ClearSearch();
+            BlocksList = PlatformActions.SearchListMoviment(myPosition,qntMovement, Grid);
+            foreach (var item in BlocksList) { item.SelectBlockMovement(); }
+        }
+
+        public void SearchBlocksAdjacents(BlockScript myPosition)
+        {
+            ClearSearch();
+            BlocksList = PlatformActions.SearchAdjacentes(myPosition, Grid);
             foreach (var item in BlocksList) { item.SelectBlockMovement(); }
         }
 
@@ -103,14 +110,14 @@ namespace BatteOfHerone.Managers
             return blocksEffects;
         }
 
-        private List<BlockScript> SearchList(BlockScript start, int qntMovement)
+       /* private List<BlockScript> SearchList(BlockScript start, int qntMovement)
         {
             List<BlockScript> blocksSearch = new List<BlockScript>
             {
                 start
             };
 
-            ClearSearch();
+           
 
             Queue<BlockScript> checkNext = new Queue<BlockScript>();
             Queue<BlockScript> checkNow = new Queue<BlockScript>();
@@ -149,14 +156,14 @@ namespace BatteOfHerone.Managers
                     SwapReference(ref checkNow, ref checkNext);
             }
             return blocksSearch;
-        }
-
+        }*/
+/*
         private void SwapReference(ref Queue<BlockScript> now, ref Queue<BlockScript> next)
         {
             Queue<BlockScript> temp = now;
             now = next;
             next = temp;
-        }
+        }*/
 
         private void InstancePlatform()
         {

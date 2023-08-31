@@ -21,4 +21,7 @@ MonoBehaviour:
     Icon: {fileID: 21300000, guid: 6aff1fe47e344e74bb6ae7a2c20aaa3f, type: 3}
     Childs:
     - {fileID: 11400000, guid: 43c1f83e3874e3e4fb1d7b647ffbd028, type: 2}
+    - {fileID: 11400000, guid: 43c1f83e3874e3e4fb1d7b647ffbd028, type: 2}
+    - {fileID: 11400000, guid: 43c1f83e3874e3e4fb1d7b647ffbd028, type: 2}
+    - {fileID: 11400000, guid: 43c1f83e3874e3e4fb1d7b647ffbd028, type: 2}
     RequiredStructures: []

@@ -1,6 +1,6 @@
 ﻿namespace BatteOfHerone.Enuns
 {
-    public enum PlayerEnum
+    public enum PlayerState
     {
         PlayerOne,
         PlayerTwo
@@ -30,7 +30,24 @@
     public enum ButtonType
     {
         Unit,
-        Upgrade
+        Upgrade,
+        Action,
+        BonusAction,
+        StandardAction
     }
 
+    public enum TurnState
+    {
+        Start,
+        Turn,
+        End
+        // Outros estados do jogo
+    }
+    public enum GameTurnState
+    {
+        Waiting,
+        SelectObject,
+        End
+        // Outros estados do jogo
+    }
 }

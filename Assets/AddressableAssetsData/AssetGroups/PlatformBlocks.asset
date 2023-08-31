@@ -18,55 +18,55 @@ MonoBehaviour:
   m_GUID: fb33e89eabff0ab4aa024d3eac940984
   m_SerializeEntries:
   - m_GUID: 98dd8e405a3f26848b63e1b78dfb7c5b
-    m_Address: Assets/Game/Prefabs/Platform/Grama.prefab
+    m_Address: Grama
     m_ReadOnly: 0
     m_SerializedLabels:
     - Ground
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a8fa1c076f83fb94f986f0141a28ac23
-    m_Address: Assets/Bitgem/Cube_World/Dirt/Prefabs/dirt_cube_1.prefab
+    m_Address: dirt_cube_1
     m_ReadOnly: 0
     m_SerializedLabels:
     - Ground
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f935ccb6d1a6a854197abbdd5a69eefb
-    m_Address: Assets/Bitgem/Cube_World/Dirt/Prefabs/dirt_cube_2.prefab
+    m_Address: dirt_cube_2
     m_ReadOnly: 0
     m_SerializedLabels:
     - Ground
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c980d1f27dc965a44af9a3652477671c
-    m_Address: Assets/Bitgem/Cube_World/Ground/Prefabs/ground_cube.prefab
+    m_Address: ground_cube
     m_ReadOnly: 0
     m_SerializedLabels:
     - Ground
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b46cdfd9e5d379f4eab9e6714883dfa1
-    m_Address: Assets/Bitgem/Cube_World/Lava/Prefabs/lava_cubes_3.prefab
+    m_Address: lava_cubes_3
     m_ReadOnly: 0
     m_SerializedLabels:
     - Ground
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 53b9e2e8c2c1ed2439a09c2ab3fb11e4
-    m_Address: Assets/Bitgem/Cube_World/Stone/Prefabs/stone_cube_1.prefab
+    m_Address: stone_cube_1
     m_ReadOnly: 0
     m_SerializedLabels:
     - Ground
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1e3e89a9932575644ae6697c585dc150
-    m_Address: Assets/Bitgem/Cube_World/Stone/Prefabs/stone_cube_2.prefab
+    m_Address: stone_cube_2
     m_ReadOnly: 0
     m_SerializedLabels:
     - Ground
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a95f32ffd89eb5a4eb1bbe0715cb0b28
-    m_Address: Assets/Bitgem/Cube_World/Stone/Prefabs/stone_cube_3.prefab
+    m_Address: stone_cube_3
     m_ReadOnly: 0
     m_SerializedLabels:
     - Ground
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2082cec8728948b428a7482c60e6b855
-    m_Address: Assets/Bitgem/Cube_World/Stone/Prefabs/stone_cube_4.prefab
+    m_Address: stone_cube_4
     m_ReadOnly: 0
     m_SerializedLabels:
     - Ground

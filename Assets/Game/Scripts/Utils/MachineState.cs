@@ -10,17 +10,17 @@ namespace BatteOfHerone.Utils
     public static class MachineState
     {
         public static State CurrentState { get; private set; }
-        public static PlayerEnum CurrentPlayer { get; private set; }
+        public static PlayerState CurrentPlayer { get; private set; }
 
         public static void ChangeTurn()
         {
-            if (CurrentPlayer == PlayerEnum.PlayerOne)
+            if (CurrentPlayer == PlayerState.PlayerOne)
             {
-                CurrentPlayer = PlayerEnum.PlayerTwo;
+                CurrentPlayer = PlayerState.PlayerTwo;
             }
             else
             {
-                CurrentPlayer = PlayerEnum.PlayerOne;
+                CurrentPlayer = PlayerState.PlayerOne;
             }
         }
 

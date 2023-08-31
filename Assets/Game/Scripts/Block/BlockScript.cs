@@ -12,7 +12,7 @@ namespace BatteOfHerone.Block
         [SerializeField] private Material m_selectMat;
         [SerializeField] private Material m_enableMat;
         [SerializeField] private Material m_disableMat;
-        [SerializeField] private CharacterScript m_characterScript;
+        [SerializeField] private Unit m_characterScript;
         [SerializeField] private bool m_IsFree;
         [SerializeField] private Vector2Int position;
         [SerializeField] private bool m_isSelection;
@@ -27,7 +27,7 @@ namespace BatteOfHerone.Block
         public Transform Movepos { get => m_movePos; set => m_movePos = value; }
         public BlockScript Prev { get => m_prev; set => m_prev = value; }
         public float Distance { get => m_distance; set => m_distance = value; }
-        public CharacterScript CharacterScript { get => m_characterScript; set => m_characterScript = value; }
+        public Unit CharacterScript { get => m_characterScript; set => m_characterScript = value; }
         public bool IsSelectionEffect { get => m_isSelectionEffect; set => m_isSelectionEffect = value; }
 
         private void Start()
@@ -36,7 +36,7 @@ namespace BatteOfHerone.Block
             IsSelection = false;
         }
 
-        public void SetInBlock(CharacterScript characterScript)
+        public void SetInBlock(Unit characterScript)
         {
             IsFree = false;
             m_characterScript = characterScript;

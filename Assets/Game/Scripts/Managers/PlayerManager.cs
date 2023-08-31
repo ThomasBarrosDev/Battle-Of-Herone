@@ -3,14 +3,25 @@ using UnityEngine;
 using BatteOfHerone.Enuns;
 using BatteOfHerone.Character;
 using BatteOfHerone.Block;
+using static BatteOfHerone.Character.Unit;
 
 namespace BatteOfHerone.Managers
 {
     public class PlayerManager : MonoBehaviour
     {
-        public PlayerEnum playerEnum;
+        public delegate void PlayerAction(BlockScript block);
 
-        public CharacterScript player;
+
+        public static PlayerAction BlockClick { get; set; }
+        public static PlayerAction UnitClick { get; set; }
+
+        public PlayerState playerEnum;
+        public TurnAction OnTurnStart { get; set; }
+        public TurnAction OnTurnEnd { get; set; }
+
+        public List<Unit> Units { get; set; } = new List<Unit>();
+
+        public Unit player;
 
         public BlockScript block;
 
@@ -23,6 +34,8 @@ namespace BatteOfHerone.Managers
         public GameObject effect;
         public GameObject effectinstance;
         public bool effectInstantiated;
+
+
         private void Start()
         {
             
@@ -109,13 +122,16 @@ namespace BatteOfHerone.Managers
 
                         if (block.IsSelection)
                         {
-                            if (!player)
-                            {
-                                PlatformManager.Instance.ClearSearch();
-                                return;
-                            }
+                            /*  if (!player)
+                              {
+                                  PlatformManager.Instance.ClearSearch();
+                                  return;
+                              }*/
 
-                            player.Moviment(block);
+                            BlockClick?.Invoke(block);
+
+                            
+                            //player.Moviment(block);
                         }
                     }
 
@@ -125,11 +141,13 @@ namespace BatteOfHerone.Managers
 
                     if (hit.transform.CompareTag("Character"))
                     {
-                        player = hit.transform.gameObject.GetComponent<CharacterScript>();
-                        if (playerEnum == player.PlayerEnum)
+                        player = hit.transform.gameObject.GetComponent<Unit>();
+                        if (playerEnum == player.PlayerState)
                         {
                             if (!player.IsChangePosition && !player.isWalk)
                                 player.SetPossibilities();
+
+                            BlockClick = (x) => player.Moviment(x);
                         }
                         else
                         {

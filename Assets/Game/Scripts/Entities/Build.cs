@@ -9,7 +9,7 @@ namespace BatteOfHerone.Entities
         public string Name;
         public string Description;
         public Sprite Icon;
-        public List<BasedCard> Childs = new List<BasedCard>();
+        public List<BasedCardScriptable> Childs = new List<BasedCardScriptable>();
         public List<string> RequiredStructures = new List<string>();
         private bool IsActive;
     }

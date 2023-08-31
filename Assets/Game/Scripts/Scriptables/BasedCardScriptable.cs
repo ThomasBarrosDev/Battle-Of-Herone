@@ -10,7 +10,7 @@ using UnityEngine;
 namespace BatteOfHerone.Entities
 {
     [CreateAssetMenu(fileName = "NewUpgrade", menuName = "UI/Upgrade")]
-    public class BasedCard : ScriptableObject
+    public class BasedCardScriptable : ScriptableObject
     {
         public string Name;
         public string Description;

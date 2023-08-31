@@ -7,11 +7,11 @@ using BatteOfHerone.Block;
 
 namespace BatteOfHerone.Character
 {
-    public class CharacterScript : MonoBehaviour
+    public class Unit : MonoBehaviour
     {
         private const float SPEED = 1.5f;
 
-        [SerializeField] private PlayerEnum playerEnum;
+        [SerializeField] private PlayerState playerState;
         [SerializeField] private int movements;
         [SerializeField] private BlockScript m_positionBlock;
         [SerializeField] Animator m_animator;
@@ -20,9 +20,11 @@ namespace BatteOfHerone.Character
         private bool m_isChangePosition;
 
         public bool isWalk { get => m_isWalk; set => m_isWalk = value; }
-        public PlayerEnum PlayerEnum { get => playerEnum; set => playerEnum = value; }
+        public PlayerState PlayerState { get => playerState; set => playerState = value; }
         public bool IsChangePosition { get => m_isChangePosition; set => m_isChangePosition = value; }
         public BlockScript PositionBlock { get => m_positionBlock; set => m_positionBlock = value; }
+        public TurnAction OnTurnStart { get; set; }
+        public TurnAction OnTurnEnd{ get; set; }
 
         private void Start()
         {
@@ -61,7 +63,7 @@ namespace BatteOfHerone.Character
                 if (t > 1)
                     break;
 
-                if (playerEnum == PlayerEnum.PlayerOne)
+                if (playerState == PlayerState.PlayerOne)
                     LookForward();
                 else
                     LookBackwards();
@@ -75,6 +77,11 @@ namespace BatteOfHerone.Character
             PlatformManager.Instance.SearchBlocksMovement(PositionBlock, movements);
         }
 
+        public void SetAdjacents()
+        {
+            PlatformManager.Instance.ClearSearch();
+            PlatformManager.Instance.SearchBlocksAdjacents(PositionBlock);
+        }
 
         public List<BlockScript> SearchPath(BlockScript pos, BlockScript destiny)
         {

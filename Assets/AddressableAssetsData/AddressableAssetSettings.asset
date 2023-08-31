@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: AddressableAssetSettings
   m_EditorClassIdentifier: 
   m_DefaultGroup: fb33e89eabff0ab4aa024d3eac940984
-  m_CachedHash:
+  m_currentHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
-  m_BuildRemoteCatalog: 0
+  m_BuildRemoteCatalog: 1
   m_BundleLocalCatalog: 0
   m_CatalogRequestsTimeout: 0
   m_DisableCatalogUpdateOnStart: 0
@@ -32,17 +32,21 @@ MonoBehaviour:
   m_ShaderBundleNaming: 0
   m_ShaderBundleCustomNaming: 
   m_MonoScriptBundleNaming: 0
+  m_CheckForContentUpdateRestrictionsOption: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
-    m_Id: 
+    m_Id: 1dcf6dd40e760d84982be9a9b4502eb7
   m_RemoteCatalogLoadPath:
-    m_Id: 
+    m_Id: b0b5b1e144bfcdd4092c58495c8a1dbe
+  m_ContentStateBuildPathProfileVariableName: <default settings path>
+  m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 0
-  m_overridePlayerVersion: 
+  m_overridePlayerVersion: BattleOFHerone
   m_GroupAssets:
   - {fileID: 11400000, guid: cf026318b8e918c4a8402592bf835877, type: 2}
   - {fileID: 11400000, guid: 8bc0fb21eff04424e9f0a2b7476236e4, type: 2}
+  - {fileID: 11400000, guid: 8b8024f99c82c4d469c4ae5f08b404e7, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -61,9 +65,9 @@ MonoBehaviour:
       - m_Id: b0b5b1e144bfcdd4092c58495c8a1dbe
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: 53207750bd8bbe340ab29dd7f0e8f270
-        m_Value: ServerData/[BuildTarget]
+        m_Value: 'ServerData/[BuildTarget]'
       - m_Id: d94cad5c00f2f0840a684b2d66f469fe
-        m_Value: http://[PrivateIpAddress]:[HostingServicePort]
+        m_Value: 'http://[PrivateIpAddress]:[HostingServicePort]'
     m_ProfileEntryNames:
     - m_Id: 3268ad5d38d09e247b1574ee0fb01057
       m_Name: BuildTarget
@@ -104,3 +108,4 @@ MonoBehaviour:
     m_Settings: {fileID: 11400000}
     m_NextInstanceId: 0
     m_RegisteredServiceTypeRefs: []
+    m_PingTimeoutInMilliseconds: 5000

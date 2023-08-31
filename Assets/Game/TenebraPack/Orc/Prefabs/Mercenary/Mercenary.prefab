@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerEnum: 0
-  movements: 2
+  movements: 3
   m_positionBlock: {fileID: 0}
   m_animator: {fileID: 5940340988489836921}
 --- !u!65 &4272657670242730723

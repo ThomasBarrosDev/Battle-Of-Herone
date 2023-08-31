@@ -8,7 +8,7 @@ using UnityEngine;
 namespace BatteOfHerone.Entities
 {
     [CreateAssetMenu(fileName = "NewUnit", menuName = "UI/Unit")]
-    public class UnitButton : BasedCard
+    public class UnitScriptable: BasedCardScriptable
     {
         public GameObject Hero;
     }

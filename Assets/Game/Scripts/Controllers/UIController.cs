@@ -1,5 +1,6 @@
 using BatteOfHerone.Character;
 using BatteOfHerone.Entities;
+using BatteOfHerone.Enuns;
 using BatteOfHerone.Managers;
 using BatteOfHerone.Scriptables;
 using BatteOfHerone.UI;
@@ -24,7 +25,7 @@ namespace BatteOfHerone.Controllers
 
         void Start()
         {
-            InitIalized(Race);
+            StartCoroutine(InitIalized(Race));
         }
 
         void Update()
@@ -32,8 +33,10 @@ namespace BatteOfHerone.Controllers
 
         }
 
-        public void InitIalized(RaceScriptable race)
+        public IEnumerator InitIalized(RaceScriptable race)
         {
+            yield return new WaitForSeconds(2);
+
             GameObject lHomePanel = Instantiate(_MenuPanel, _menuViewPort.transform);
 
             race.Buildings.ForEach((x) =>
@@ -58,8 +61,6 @@ namespace BatteOfHerone.Controllers
                 {
                     x.Childs.ForEach((x) =>
                     {
-                        PlatformManager.Instance.Core.GetComponent<CharacterScript>().SetPossibilities();
-
                         CustomButton lButton = Instantiate(_button, lBuildPanel.transform);
                         lButton.UpdateIcon(x.Icon);
                         lButton.gameObject.name = x.Name;
@@ -70,8 +71,14 @@ namespace BatteOfHerone.Controllers
 
                                 lButton.ListeringAction(() =>
                                 {
-                                    UnitButton unit = (UnitButton)x;
-                                    Instantiate(unit.Hero);
+                                    UnitScriptable unit = (UnitScriptable)x;
+
+                                    PlatformManager.Instance.Core.SetAdjacents();
+
+                                    PlatformManager.Instance.unitselect = unit.Hero;
+
+                                    PlayerManager.BlockClick = (x) => GameManager.Instance.InstantiateMonster(PlatformManager.Instance.unitselect, x, PlayerState.PlayerOne);
+                                    
                                 });
 
                                 break;
